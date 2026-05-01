@@ -17,6 +17,7 @@
         <allure.version>2.34.0</allure.version>
         <lombok.version>1.18.42</lombok.version>
         <gson.version>2.13.2</gson.version>
+        <aspectjweaver.version>1.9.22</aspectjweaver.version>
     </properties>
 
     <dependencies>
@@ -62,6 +63,11 @@
             <version>${gson.version}</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -80,6 +86,9 @@
                 <version>3.5.4</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
+                    </argLine>
                     <systemPropertyVariables>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
